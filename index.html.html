@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental & Emotional Factor — Higher PE Revision Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1e3d;
+    --blue: #1d4ed8;
+    --blue-light: #dbeafe;
+    --blue-mid: #3b82f6;
+    --teal: #0d9488;
+    --teal-light: #ccfbf1;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --amber-mid: #f59e0b;
+    --green: #15803d;
+    --green-light: #dcfce7;
+    --red: #b91c1c;
+    --red-light: #fee2e2;
+    --slate: #f8fafc;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #64748b;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f1f5f9;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 52px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,78,216,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--blue-mid); }
+  .hero-sub {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all .2s;
+    background: rgba(255,255,255,0.06);
+  }
+  .chip:hover, .chip.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+  .main { padding: 32px 20px 60px; max-width: 900px; margin: 0 auto; }
+
+  /* ── SECTION ── */
+  .section { display: none; animation: fadeUp .35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .def-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .def-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .def-card.mental::before { background: var(--blue); }
+  .def-card.emotional::before { background: var(--amber-mid); }
+  .def-card:hover { border-color: #94a3b8; box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .def-card.open { border-color: var(--blue-mid); box-shadow: 0 4px 20px rgba(59,130,246,0.12); }
+  .def-card.open.emotional { border-color: var(--amber-mid); box-shadow: 0 4px 20px rgba(245,158,11,0.12); }
+  .card-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .mental .card-tag { background: var(--blue-light); color: var(--blue); }
+  .emotional .card-tag { background: var(--amber-light); color: var(--amber); }
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .card-hint { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .card-def { font-size: 13px; color: #334155; line-height: 1.55; display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .def-card.open .card-def { display: block; }
+  .card-example { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 6px; }
+
+  /* ── CYCLE ── */
+  .cycle-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-bottom: 28px; }
+  .cycle-step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-right: none;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+  }
+  .cycle-step:first-child { border-radius: 12px 0 0 12px; }
+  .cycle-step:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid var(--border); }
+  .cycle-step::after {
+    content: '›';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--blue-mid);
+    z-index: 1;
+    background: var(--white);
+    width: 20px;
+    text-align: center;
+  }
+  .cycle-step:last-child::after { display: none; }
+  .cycle-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--blue); }
+  .cycle-label { font-size: 12px; font-weight: 500; color: var(--navy); margin-top: 4px; line-height: 1.4; }
+
+  /* ── CATEGORY LABEL ── */
+  .cat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 4px;
+    padding-left: 2px;
+  }
+
+  /* ── ACCORDIONS ── */
+  .accordion { border: 1.5px solid var(--border); border-radius: 14px; margin-bottom: 10px; overflow: hidden; background: var(--white); }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .accordion-header:hover { background: #f8fafc; }
+  .accordion-title { font-size: 14px; font-weight: 500; color: var(--navy); }
+  .accordion-chevron { font-size: 18px; color: var(--muted); transition: transform .25s; }
+  .accordion.open .accordion-chevron { transform: rotate(90deg); color: var(--blue); }
+  .accordion-body { display: none; padding: 0 20px 18px; border-top: 1px solid var(--border); }
+  .accordion.open .accordion-body { display: block; padding-top: 16px; }
+  .accordion-body p { font-size: 13.5px; color: #334155; line-height: 1.65; margin-bottom: 8px; }
+  .accordion-body .example {
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    background: var(--slate);
+    border-left: 3px solid var(--blue-mid);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+  }
+
+  /* ── PROS CONS ── */
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .pros, .cons { border-radius: 10px; padding: 14px; }
+  .pros { background: var(--green-light); }
+  .cons { background: var(--red-light); }
+  .pros h4 { font-size: 12px; font-weight: 600; color: var(--green); margin-bottom: 8px; }
+  .cons h4 { font-size: 12px; font-weight: 600; color: var(--red); margin-bottom: 8px; }
+  .pros li, .cons li { font-size: 12px; line-height: 1.55; margin-bottom: 4px; padding-left: 4px; }
+  .pros li::marker { color: var(--green); }
+  .cons li::marker { color: var(--red); }
+  ul.pc-list { padding-left: 16px; }
+
+  /* ── RAVE TABLE ── */
+  .rave-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; margin-top: 12px; }
+  .rave-table tr:nth-child(odd) td { background: var(--teal-light); }
+  .rave-table tr:nth-child(even) td { background: var(--white); }
+  .rave-table td { padding: 10px 14px; font-size: 13px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  .rave-letter { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--teal); width: 32px; }
+  .rave-word { font-weight: 600; color: var(--navy); width: 120px; }
+
+  /* ── SMART GRID ── */
+  .smart-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-bottom: 24px; }
+  .smart-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .smart-letter { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--green); }
+  .smart-word { font-size: 12px; font-weight: 600; color: var(--navy); margin: 4px 0; }
+  .smart-desc { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+  /* ── TWO-COL TABLE ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .two-col-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .two-col-header { padding: 10px 16px; font-size: 12px; font-weight: 700; }
+  .two-col-body { padding: 12px 16px; font-size: 13px; color: #334155; line-height: 1.6; }
+  .two-col-body em { display: block; font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  /* ── FEEDBACK TABLE ── */
+  .fb-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; font-size: 13px; margin-bottom: 20px; }
+  .fb-table thead td { background: var(--navy); color: #fff; padding: 10px 14px; font-weight: 600; }
+  .fb-table tbody tr:nth-child(odd) td { background: var(--white); }
+  .fb-table tbody tr:nth-child(even) td { background: var(--slate); }
+  .fb-table td { padding: 9px 14px; vertical-align: top; border-bottom: 1px solid var(--border); }
+  .fb-type { font-weight: 600; color: var(--blue); }
+
+  /* ── COMMAND WORD CARDS ── */
+  .cmd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .cmd-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .cmd-header { background: var(--red); padding: 12px 16px; display: flex; align-items: baseline; gap: 10px; }
+  .cmd-word { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #fff; }
+  .cmd-marks { font-size: 11px; color: rgba(255,255,255,0.7); }
+  .cmd-body { padding: 14px 16px; }
+  .cmd-tip { font-size: 13px; color: #334155; line-height: 1.6; margin-bottom: 10px; }
+  .cmd-example { font-size: 12px; color: var(--muted); font-style: italic; background: #fef2f2; border-left: 3px solid var(--red); padding: 8px 12px; border-radius: 0 6px 6px 0; line-height: 1.55; }
+
+  /* ── FASI BOX ── */
+  .fasi-box { background: var(--navy); border-radius: 14px; padding: 20px 24px; margin-bottom: 24px; }
+  .fasi-row { display: flex; gap: 0; }
+  .fasi-step { flex: 1; text-align: center; padding: 16px 10px; }
+  .fasi-step + .fasi-step { border-left: 1px solid rgba(255,255,255,0.1); }
+  .fasi-letter { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue-mid); }
+  .fasi-word { font-size: 12px; font-weight: 600; color: #fff; margin: 4px 0; }
+  .fasi-desc { font-size: 11px; color: #94a3b8; line-height: 1.4; }
+
+  /* ── FLASHCARDS ── */
+  .fc-wrap { perspective: 1200px; margin-bottom: 16px; cursor: pointer; }
+  .fc-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .45s cubic-bezier(.4,0,.2,1);
+    min-height: 180px;
+  }
+  .fc-inner.flipped { transform: rotateY(180deg); }
+  .fc-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 40px;
+    text-align: center;
+    min-height: 180px;
+  }
+  .fc-front {
+    background: var(--white);
+    border: 2px solid var(--blue);
+  }
+  .fc-back {
+    background: var(--navy);
+    transform: rotateY(180deg);
+  }
+  .fc-label { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 12px; }
+  .fc-front .fc-label { color: var(--blue); }
+  .fc-back .fc-label { color: var(--blue-mid); }
+  .fc-text { font-size: 16px; font-weight: 500; line-height: 1.5; }
+  .fc-front .fc-text { color: var(--navy); }
+  .fc-back .fc-text { color: #fff; }
+  .fc-hint { font-size: 11px; color: var(--muted); margin-top: 10px; }
+  .fc-nav { display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .fc-btn {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    color: var(--text);
+    transition: all .15s;
+    font-weight: 500;
+  }
+  .fc-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .fc-counter { font-size: 13px; color: var(--muted); font-weight: 500; min-width: 70px; text-align: center; }
+
+  /* ── QUIZ ── */
+  .quiz-q { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 12px; }
+  .quiz-q-text { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 14px; line-height: 1.5; }
+  .quiz-q-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 8px; letter-spacing: .08em; }
+  .options { display: grid; gap: 8px; }
+  .opt {
+    border: 1.5px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-align: left;
+    background: var(--white);
+    color: var(--text);
+    transition: all .12s;
+    font-weight: 400;
+  }
+  .opt:hover:not(.answered) { background: #f1f5f9; border-color: #94a3b8; }
+  .opt.correct { border-color: var(--green); background: var(--green-light); color: var(--green); font-weight: 500; }
+  .opt.wrong { border-color: var(--red); background: var(--red-light); color: var(--red); }
+  .quiz-feedback { font-size: 13px; margin-top: 10px; padding: 10px 14px; border-radius: 8px; display: none; line-height: 1.5; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.ok { background: var(--green-light); color: var(--green); font-weight: 500; }
+  .quiz-feedback.no { background: var(--red-light); color: var(--red); }
+  .score-bar { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+  .score-num { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); }
+  .score-label { font-size: 13px; color: var(--muted); }
+  .reset-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 12px;
+    transition: opacity .15s;
+  }
+  .reset-btn:hover { opacity: .85; }
+
+  /* ── MONITORING TABLE ── */
+  .mon-table { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .mon-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .mon-header { padding: 12px 16px; font-size: 12px; font-weight: 700; }
+  .mon-body { padding: 14px 16px; font-size: 13px; color: #334155; line-height: 1.6; }
+  .mon-body b { color: var(--navy); }
+  .benefits-list { margin-top: 10px; padding-left: 16px; }
+  .benefits-list li { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+
+  /* ── SMALL UTILITIES ── */
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .info-box { background: var(--blue-light); border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #1e3a8a; line-height: 1.6; margin-bottom: 16px; }
+  .info-box b { font-weight: 600; }
+  @media (max-width: 600px) {
+    .hero { padding: 36px 20px 28px; }
+    .smart-grid { grid-template-columns: repeat(3,1fr); }
+    .cmd-grid { grid-template-columns: 1fr; }
+    .pros-cons { grid-template-columns: 1fr; }
+    .cycle-row { grid-template-columns: 1fr 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .fasi-row { flex-wrap: wrap; }
+    .mon-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Higher Physical Education</p>
+    <h1>Mental &amp; <span>Emotional</span><br>Factor</h1>
+    <p class="hero-sub">Complete revision guide — click a topic below to get started</p>
+    <div class="hero-chips">
+      <button class="chip active" onclick="showSection('subfactors',this)">Sub-factors</button>
+      <button class="chip" onclick="showSection('flashcards',this)">Flashcards</button>
+      <button class="chip" onclick="showSection('approaches',this)">Approaches</button>
+      <button class="chip" onclick="showSection('data',this)">Data collection</button>
+      <button class="chip" onclick="showSection('goals',this)">Goals &amp; monitoring</button>
+      <button class="chip" onclick="showSection('exam',this)">Exam skills</button>
+      <button class="chip" onclick="showSection('quiz',this)">Quiz</button>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── SUB-FACTORS ── -->
+  <div class="section active" id="subfactors">
+    <h2 class="section-title">Sub-factors &amp; definitions</h2>
+    <p class="section-desc">Tap any card to reveal the definition and a performance impact example.</p>
+
+    <p class="cat-label">Mental sub-factors</p>
+    <div class="cards-grid">
+      <div class="def-card mental" onclick="toggleCard(this)">
+        <span class="card-tag">Mental</span>
+        <div class="card-name">Mental Toughness</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">The ability to deal effectively with stress, challenge and failure and perform to your very best within a performance context.
+          <span class="card-example">Example: A basketballer who misses a shot is determined to win the rebound and shoot again.</span>
+        </div>
+      </div>
+      <div class="def-card mental" onclick="toggleCard(this)">
+        <span class="card-tag">Mental</span>
+        <div class="card-name">Anxiety</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">A feeling of worry, nervousness or unease about something with an uncertain outcome (result, opponent, crowd, weather, injury etc).
+          <span class="card-example">Example: Tight muscles cause inaccurate passes, unforced errors in badminton, or a slow start on the whistle.</span>
+        </div>
+      </div>
+      <div class="def-card mental" onclick="toggleCard(this)">
+        <span class="card-tag">Mental</span>
+        <div class="card-name">Level of Arousal</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">The preparation of the body for action. When threatened, the brain prepares the body to react (fight or flight). Coaches may psyche up or calm down athletes.
+          <span class="card-example">Example: Awareness of arousal level allows you to control it and perform to a better level.</span>
+        </div>
+      </div>
+      <div class="def-card mental" onclick="toggleCard(this)">
+        <span class="card-tag">Mental</span>
+        <div class="card-name">Decision Making</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">The ability to use our senses to identify the correct solution for a performance challenge — using sight, hearing, kinaesthetic sense, past experience, and the ability to read and predict the game.
+          <span class="card-example">Example: Top performers make the right call at the right time using their experience of opponent, self, and environment.</span>
+        </div>
+      </div>
+      <div class="def-card mental" onclick="toggleCard(this)">
+        <span class="card-tag">Mental</span>
+        <div class="card-name">Concentration</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">The ability to stay fully focused on a task for the full period of time that task is happening.
+          <span class="card-example">Example: Allows performers to predict opponents' movements, identify space, and identify weaknesses.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cat-label">Emotional sub-factors</p>
+    <div class="cards-grid">
+      <div class="def-card emotional" onclick="toggleCard(this)">
+        <span class="card-tag">Emotional</span>
+        <div class="card-name">Confidence</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">Having belief in your own ability — willing to try challenging things and back yourself throughout.
+          <span class="card-example">Example: Low confidence causes tension, rigid movements, and missing a smash shot in badminton.</span>
+        </div>
+      </div>
+      <div class="def-card emotional" onclick="toggleCard(this)">
+        <span class="card-tag">Emotional</span>
+        <div class="card-name">Anger</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">A strong feeling of annoyance, displeasure or hostility.
+          <span class="card-example">Example: Uncontrolled anger leads to bad tackles, giving away free kicks, and handing the opposition an attacking advantage.</span>
+        </div>
+      </div>
+      <div class="def-card emotional" onclick="toggleCard(this)">
+        <span class="card-tag">Emotional</span>
+        <div class="card-name">Fear</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">An unpleasant emotion caused by the threat of danger or defeat.
+          <span class="card-example">Example: Fear causes hesitation, poor technique, and avoidance of challenging situations in performance.</span>
+        </div>
+      </div>
+      <div class="def-card emotional" onclick="toggleCard(this)">
+        <span class="card-tag">Emotional</span>
+        <div class="card-name">Resilience</div>
+        <div class="card-hint">Tap to reveal definition</div>
+        <div class="card-def">The ability to never give up. Maintaining a positive outlook throughout.
+          <span class="card-example">Example: A resilient performer bounces back from mistakes and keeps striving even when behind.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="section-title" style="font-size:18px;margin-bottom:10px">Cycle of Analysis</h3>
+    <p class="section-desc" style="margin-bottom:16px">The 4-stage process used to maximise performance improvement.</p>
+    <div class="cycle-row">
+      <div class="cycle-step"><div class="cycle-num">1</div><div class="cycle-label">Gather data on performance</div></div>
+      <div class="cycle-step"><div class="cycle-num">2</div><div class="cycle-label">Analyse strengths &amp; weaknesses</div></div>
+      <div class="cycle-step"><div class="cycle-num">3</div><div class="cycle-label">Plan &amp; implement approaches</div></div>
+      <div class="cycle-step"><div class="cycle-num">4</div><div class="cycle-label">Monitor &amp; evaluate</div></div>
+    </div>
+  </div>
+
+  <!-- ── FLASHCARDS ── -->
+  <div class="section" id="flashcards">
+    <h2 class="section-title">Flashcards</h2>
+    <p class="section-desc">Tap the card to flip it and reveal the answer. Use the buttons to move between cards.</p>
+    <div class="fc-wrap" onclick="flipCard()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front">
+          <div class="fc-label">Question</div>
+          <div class="fc-text" id="fc-q"></div>
+          <div class="fc-hint">Tap to flip</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-label">Answer</div>
+          <div class="fc-text" id="fc-a"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevCard()">← Prev</button>
+      <span class="fc-counter" id="fc-counter"></span>
+      <button class="fc-btn" onclick="nextCard()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── APPROACHES ── -->
+  <div class="section" id="approaches">
+    <h2 class="section-title">Development Approaches</h2>
+    <p class="section-desc">All three approaches can be used to develop <strong>both</strong> mental and emotional sub-factors. Click each to expand.</p>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">1. Mental Rehearsal with Music</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <p>The performer pictures themselves executing a skill and practises it in their mind. Music is used to help clear negativity and distraction, focusing on the upcoming performance. It aims to flush out negative thoughts and paint a picture of a quality performance with a successful outcome.</p>
+        <div class="example">Example: Ronaldo uses mental rehearsal before matches. Some athletes use hip-hop to get hyped up; others use classical music to calm themselves down. All are different.</div>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>✓ Positives</h4>
+            <ul class="pc-list">
+              <li>No equipment needed — can be done anywhere</li>
+              <li>Can be used at home or in the build-up to a performance</li>
+              <li>Helps an injured player maintain mental sharpness</li>
+              <li>Allows you to rehearse dealing with challenges before they happen</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>✗ Negatives</h4>
+            <ul class="pc-list">
+              <li>Requires a quiet space — difficult with crowd noise</li>
+              <li>Must be practised regularly to feel the full benefit</li>
+              <li>Young athletes may struggle to keep images positive</li>
+              <li>Negative thoughts of past defeats can creep in if nervous</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">2. Positive Talk (self-talk or team talk)</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <p>Set phrases run over in your mind to stay calm in challenging situations. All thoughts and words must be positive and controlled.</p>
+        <div class="example">"Low and hard to the goalkeeper's right = goal" &nbsp;|&nbsp; "It was a foul, just accept the referee's decision" &nbsp;|&nbsp; "I'm one on one with the keeper — composure"</div>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>✓ Positives</h4>
+            <ul class="pc-list">
+              <li>No equipment — can be used anywhere</li>
+              <li>Can be used before AND during performance</li>
+              <li>Versatile — can target any skill, tactic or behaviour</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>✗ Negatives</h4>
+            <ul class="pc-list">
+              <li>Must be practised regularly to be effective</li>
+              <li>Can feel self-conscious when using near others initially</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">3. Routines and Rituals</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <p>Athletes follow set routines before or during performance to maintain focus and mental order. Creates a consistent mindset going into performance.</p>
+        <div class="example">Serena Williams bounces the ball 5 times before every serve. Nadal arranges his water bottles in a specific way — "When I do these things it means I am focused, I am competing."</div>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>✓ Positives</h4>
+            <ul class="pc-list">
+              <li>Creates a strong sense of focus and readiness</li>
+              <li>Can be carried out before or during performance</li>
+              <li>Helps block out distractions</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>✗ Negatives</h4>
+            <ul class="pc-list">
+              <li>Can become a distraction if the routine is disrupted</li>
+              <li>May not work until the habit is well established</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DATA COLLECTION ── -->
+  <div class="section" id="data">
+    <h2 class="section-title">Data Collection Methods</h2>
+    <p class="section-desc">Mental and emotional data collection is challenging because much of it is <strong>subjective</strong> (based on opinion). It must be completed individually, prior to a performance.</p>
+
+    <div class="accordion open" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">SCAT Test — Sports Competition Anxiety Test</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <p>Used to collect data on <strong>anxiety</strong>. Completed individually, in private, before performance. Questions ask e.g. <em>"Before I compete, I worry about not performing well"</em> with answers: Rarely / Sometimes / Often.</p>
+        <p style="font-weight:600;color:var(--navy);font-size:13px;margin-top:10px;margin-bottom:4px">Why use it? — RAVE</p>
+        <table class="rave-table">
+          <tr><td class="rave-letter">R</td><td class="rave-word">Reliable</td><td>Standardised — same every time — allows fair comparison to the scoring system.</td></tr>
+          <tr><td class="rave-letter">A</td><td class="rave-word">Appropriate &amp; Accurate</td><td>Completed in private; you are the best judge of your own mental state.</td></tr>
+          <tr><td class="rave-letter">V</td><td class="rave-word">Valid</td><td>Provides a permanent record for future comparisons to check for improvement.</td></tr>
+          <tr><td class="rave-letter">E</td><td class="rave-word">Easy to complete</td><td>Quick, little equipment, instant results — training can begin straight away.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">PPW — Performance Profile Wheel</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <p>Rate yourself on 4 mental or emotional sub-factors on a scale of <strong>1–12</strong> (12 = excellent, 1 = poor). Compare to a model performer to identify 1 strength and 1 development need.</p>
+        <div class="example">Sub-factors used: Mental Toughness · Decision Making · Concentration · Anxiety · Confidence · Fear · Resilience · Anger</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-title">Quantitative vs Qualitative Data</span>
+        <span class="accordion-chevron">›</span>
+      </div>
+      <div class="accordion-body">
+        <div class="two-col">
+          <div class="two-col-card">
+            <div class="two-col-header" style="background:var(--blue-light);color:var(--blue)">Quantitative</div>
+            <div class="two-col-body">Numbers, statistics, percentages. <strong>Objective</strong> — no personal feelings, just raw facts.<em>Example: SCAT test score.</em></div>
+          </div>
+          <div class="two-col-card">
+            <div class="two-col-header" style="background:var(--amber-light);color:var(--amber)">Qualitative</div>
+            <div class="two-col-body">Perception and opinion. <strong>Subjective</strong> — personal opinions can affect accuracy.<em>Example: Training diary entries.</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="section-title" style="font-size:16px;margin-bottom:8px">Model Performer</h3>
+    <p style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:8px">A model performer can be: the world's best, a school/regional/national champion, a team mate, or a teacher/coach.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.65"><strong style="color:var(--navy)">Why use one?</strong> To motivate and inspire mentally · set realistic targets · highlight outstanding mental attributes · promote performance consistency · highlight correct mindset before, during and after performance.</p>
+  </div>
+
+  <!-- ── GOALS & MONITORING ── -->
+  <div class="section" id="goals">
+    <h2 class="section-title">Goals, Monitoring &amp; Evaluating</h2>
+    <p class="section-desc">Every athlete should have targets they want — and <em>can</em> — achieve.</p>
+
+    <h3 class="section-title" style="font-size:16px;margin-bottom:14px">SMART Targets</h3>
+    <div class="smart-grid">
+      <div class="smart-card"><div class="smart-letter">S</div><div class="smart-word">Specific</div><div class="smart-desc">Linked to your weakness and performance context</div></div>
+      <div class="smart-card"><div class="smart-letter">M</div><div class="smart-word">Measurable</div><div class="smart-desc">You must be able to measure whether you achieved it</div></div>
+      <div class="smart-card"><div class="smart-letter">A</div><div class="smart-word">Achievable</div><div class="smart-desc">Challenging but realistic — world #1 is unrealistic for most</div></div>
+      <div class="smart-card"><div class="smart-letter">R</div><div class="smart-word">Relevant</div><div class="smart-desc">Must relate to the individual athlete and their activity</div></div>
+      <div class="smart-card"><div class="smart-letter">T</div><div class="smart-word">Timed</div><div class="smart-desc">Too short = unrealistic. Too long = loses focus and motivation</div></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:24px">
+      <div class="two-col-card">
+        <div class="two-col-header" style="background:var(--teal-light);color:var(--teal)">Short-term goal example</div>
+        <div class="two-col-body">By week 2 of my PDP, I will be able to carry out mental rehearsal with music effectively on my own before a football match.</div>
+      </div>
+      <div class="two-col-card">
+        <div class="two-col-header" style="background:var(--blue-light);color:var(--blue)">Long-term goal example</div>
+        <div class="two-col-body">By the end of my 6-week PDP, I will be able to consistently control my anxiety whilst performing in football competitions.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="section-title" style="font-size:16px;margin-bottom:12px">Monitoring &amp; Evaluating</h3>
+    <div class="mon-table">
+      <div class="mon-card">
+        <div class="mon-header" style="background:var(--teal-light);color:var(--teal)">Monitoring (on-going)</div>
+        <div class="mon-body">An <b>on-going</b> process to track progress throughout the PDP. If improvements aren't being made, adapt the approach.
+          <ul class="benefits-list">
+            <li><b>Method: Training diary</b> — record how mental factors impacted each session and your next steps.</li>
+            <li>Easy to use, reliable, provides a written record to look back on.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mon-card">
+        <div class="mon-header" style="background:var(--blue-light);color:var(--blue)">Evaluating (end-point)</div>
+        <div class="mon-body">An <b>end-point</b> check — comparing performance before and after the programme to judge its effectiveness.
+          <ul class="benefits-list">
+            <li><b>Method: Retesting</b> — repeat the SCAT in exactly the same conditions at the end of the PDP.</li>
+            <li>Set protocols ensure accurate results; allows you to see clearly if the programme worked.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="section-title" style="font-size:16px;margin-bottom:12px">Feedback Types</h3>
+    <table class="fb-table">
+      <thead><tr><td>Type</td><td>Description</td><td>Example</td></tr></thead>
+      <tbody>
+        <tr><td class="fb-type">Internal (kinaesthetic)</td><td>Movement awareness — feeling whether a skill was executed well without seeing the outcome.</td><td>Feeling whether you struck a football sweetly before you see where it goes.</td></tr>
+        <tr><td class="fb-type">External — written</td><td>Information from secondary sources in written form.</td><td>SCAT test score. Movement analysis report.</td></tr>
+        <tr><td class="fb-type">External — verbal</td><td>Advice from a teacher, coach or knowledgeable peer.</td><td>Coach gives positive feedback after performance to boost confidence.</td></tr>
+        <tr><td class="fb-type">External — visual</td><td>Watching video of your own or a model performer's performance.</td><td>Watching video in slow motion to identify where technique broke down.</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><b>For feedback to be effective it must be:</b> positive · precise and accurate · given as soon as possible · in bite-size chunks (too much information at once is difficult to process).</div>
+  </div>
+
+  <!-- ── EXAM SKILLS ── -->
+  <div class="section" id="exam">
+    <h2 class="section-title">Exam Skills — Command Words</h2>
+    <p class="section-desc">Know exactly what each command word is asking you to do and how marks are awarded.</p>
+
+    <h3 class="section-title" style="font-size:15px;margin-bottom:12px">Impact question structure — FASI</h3>
+    <div class="fasi-box">
+      <div class="fasi-row">
+        <div class="fasi-step"><div class="fasi-letter">F</div><div class="fasi-word">Factor</div><div class="fasi-desc">Name the mental or emotional sub-factor</div></div>
+        <div class="fasi-step"><div class="fasi-letter">A</div><div class="fasi-word">Activity</div><div class="fasi-desc">Name your sport or activity</div></div>
+        <div class="fasi-step"><div class="fasi-letter">S</div><div class="fasi-word">Situation</div><div class="fasi-desc">Describe specifically what happened in performance</div></div>
+        <div class="fasi-step"><div class="fasi-letter">I</div><div class="fasi-word">Impact</div><div class="fasi-desc">Explain the knock-on effect on overall performance</div></div>
+      </div>
+    </div>
+
+    <div class="cmd-grid">
+      <div class="cmd-card">
+        <div class="cmd-header"><span class="cmd-word">Describe</span><span class="cmd-marks">1 mark per relevant detail</span></div>
+        <div class="cmd-body">
+          <p class="cmd-tip">State what happened in detail. Cover <strong>WHAT, WHERE, WHEN, WHO, HOW</strong>. Each relevant piece of detail earns 1 mark.</p>
+          <div class="cmd-example">A method I used to gather data on anxiety was the SCAT test. I completed this on my own before performance <em>(1)</em> on the PE Cycle of Analysis app <em>(1)</em>. I answered 10 questions <em>(1)</em> with options: rarely, sometimes, often <em>(1)</em>.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-header"><span class="cmd-word">Explain</span><span class="cmd-marks">1 mark per paired point</span></div>
+        <div class="cmd-body">
+          <p class="cmd-tip">Give a reason AND state the effect it has. <strong>Point (sentence 1) + Expand with effect (sentence 2) = 1 mark.</strong> They must match up.</p>
+          <div class="cmd-example">I used positive self-talk because it required no equipment. This meant I could maximise training time and therefore improve my performance quicker. <em>(1 mark for matching pair)</em></div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-header"><span class="cmd-word">Analyse</span><span class="cmd-marks">2 pros + 2 cons for 4 marks</span></div>
+        <div class="cmd-body">
+          <p class="cmd-tip">Look at both pros AND cons. Use: <strong>Identification → Implication → Impact.</strong> Give 2 positive and 2 negative responses.</p>
+          <div class="cmd-example">"One advantage of mental rehearsal is it requires no equipment. This means more time can be spent on actual training." | "One disadvantage is it requires a quiet space, which is difficult in a noisy changing room."</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-header"><span class="cmd-word">Evaluate</span><span class="cmd-marks">1 mark per IJV triplet</span></div>
+        <div class="cmd-body">
+          <p class="cmd-tip">Write in the <strong>past tense</strong>. <strong>Identify</strong> (was it effective?) → <strong>Judgement</strong> (how?) → <strong>Value</strong> (what happened to performance as a result?)</p>
+          <div class="cmd-example">Mental rehearsal with music was effective <em>(I)</em> because it could be completed anywhere, keeping my game plan fresh <em>(J)</em>. As a result, I began with confidence and played out pre-rehearsed shot sequences against my opponent <em>(V).</em> <em>(1 mark)</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box"><b>Top tip:</b> For Evaluate questions, always link back to your performance. You cannot be awarded the mark if you do not mention the effect on performance.</div>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <div class="section" id="quiz">
+    <h2 class="section-title">Knowledge Quiz</h2>
+    <p class="section-desc">Test yourself! Click an answer — green means correct, red means try again next time.</p>
+    <div class="score-bar"><span class="score-num" id="quiz-score-num">0</span><span class="score-label" id="quiz-score-label">/ 0 answered</span></div>
+    <div id="quiz-container"></div>
+    <button class="reset-btn" onclick="resetQuiz()">Restart quiz</button>
+  </div>
+
+</div>
+
+<script>
+// ── NAVIGATION ──────────────────────────────────────────────────────────────
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── DEFINITION CARDS ────────────────────────────────────────────────────────
+function toggleCard(el) {
+  el.classList.toggle('open');
+  el.querySelector('.card-hint').textContent = el.classList.contains('open') ? 'Tap to hide' : 'Tap to reveal definition';
+}
+
+// ── ACCORDIONS ──────────────────────────────────────────────────────────────
+function toggleAccordion(el) { el.classList.toggle('open'); }
+
+// ── FLASHCARDS ──────────────────────────────────────────────────────────────
+const cards = [
+  {q:'What is mental toughness?', a:'The ability to deal effectively with stress, challenge and failure and perform to your very best.'},
+  {q:'What is anxiety?', a:'A feeling of worry or unease about an uncertain outcome (result, opponent, crowd, injury etc.)'},
+  {q:'What is level of arousal?', a:'The preparation of the body for action — the brain triggers fight or flight in response to threat.'},
+  {q:'What is decision making?', a:'The ability to use your senses to identify the correct solution for a performance challenge.'},
+  {q:'What is concentration?', a:'The ability to stay fully focused on a task for the full period of time it is happening.'},
+  {q:'What is confidence (emotional sub-factor)?', a:'Having belief in your own ability — willing to try challenging things and back yourself throughout.'},
+  {q:'What is resilience?', a:'The ability to never give up. Maintaining a positive outlook throughout.'},
+  {q:'What does SMART stand for?', a:'Specific, Measurable, Achievable, Relevant, Timed.'},
+  {q:'What is mental rehearsal?', a:'Picturing yourself executing a skill and practising it in your mind to flush out negative thoughts.'},
+  {q:'What is positive self-talk?', a:'Set phrases run over in your mind to stay calm in challenging situations. All must be positive and controlled.'},
+  {q:'What is quantitative data?', a:'Data based on numbers, statistics or percentages. Objective — no personal feelings, just raw facts.'},
+  {q:'What is qualitative data?', a:'Data based on perception and opinion. Subjective — personal opinions can affect accuracy.'},
+  {q:'What does SCAT stand for?', a:'Sports Competition Anxiety Test. Used to gather data on anxiety before performance.'},
+  {q:'What does RAVE stand for in relation to the SCAT?', a:'Reliable, Appropriate & Accurate, Valid, Easy to complete.'},
+  {q:'What is the difference between monitoring and evaluating?', a:'Monitoring is on-going progress tracking throughout the PDP. Evaluating is an end-point comparison of before and after.'},
+  {q:'Name the 4 types of feedback.', a:'Internal (kinaesthetic), External written, External verbal, External visual (video).'},
+  {q:'What are the 4 stages of the Cycle of Analysis?', a:'1) Gather data, 2) Analyse strengths & weaknesses, 3) Plan & implement approaches, 4) Monitor & evaluate.'},
+  {q:'What is the FASI structure for impact questions?', a:'Factor → Activity → Situation → Impact.'},
+];
+let fcIdx = 0;
+function renderCard() {
+  document.getElementById('fc-inner').classList.remove('flipped');
+  document.getElementById('fc-q').textContent = cards[fcIdx].q;
+  document.getElementById('fc-a').textContent = cards[fcIdx].a;
+  document.getElementById('fc-counter').textContent = (fcIdx+1) + ' / ' + cards.length;
+}
+function flipCard() { document.getElementById('fc-inner').classList.toggle('flipped'); }
+function nextCard() { fcIdx = (fcIdx+1) % cards.length; renderCard(); }
+function prevCard() { fcIdx = (fcIdx-1+cards.length) % cards.length; renderCard(); }
+renderCard();
+
+// ── QUIZ ────────────────────────────────────────────────────────────────────
+const questions = [
+  {q:'Which sub-factor describes the ability to deal with stress, challenge and failure?', opts:['Anxiety','Mental Toughness','Resilience','Concentration'], ans:1},
+  {q:'A footballer makes a bad tackle because they cannot control their emotions. Which emotional sub-factor is most likely?', opts:['Fear','Resilience','Anger','Confidence'], ans:2},
+  {q:'The SCAT test primarily measures which sub-factor?', opts:['Confidence','Concentration','Mental Toughness','Anxiety'], ans:3},
+  {q:'Which data type involves numbers, statistics and percentages?', opts:['Qualitative','Subjective','Quantitative','Descriptive'], ans:2},
+  {q:'What does the "A" in SMART targets stand for?', opts:['Accurate','Achievable','Active','Analytical'], ans:1},
+  {q:'Which type of feedback involves feeling whether a skill was performed well without seeing the outcome?', opts:['External written','External verbal','External visual','Internal kinaesthetic'], ans:3},
+  {q:'Monitoring is best described as:', opts:['An end-point comparison','An on-going process to track progress','A data collection method','A short-term target'], ans:1},
+  {q:'Which approach involves running set phrases through your mind during challenging situations?', opts:['Routines and Rituals','Mental Rehearsal','Positive Talk','Retesting'], ans:2},
+  {q:'In an Evaluate answer, what is the correct IJV order?', opts:['Implication → Identify → Value','Identify → Judgement → Value','Value → Identify → Judgement','Judgement → Value → Identify'], ans:1},
+  {q:'The PPW (Performance Profile Wheel) uses a scale of:', opts:['1–5','1–10','1–12','1–20'], ans:2},
+];
+let scores = Array(questions.length).fill(null);
+
+function buildQuiz() {
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = '';
+  questions.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `
+      <div class="quiz-q-num">Question ${qi+1} of ${questions.length}</div>
+      <div class="quiz-q-text">${q.q}</div>
+      <div class="options">${q.opts.map((o,oi)=>`<button class="opt" data-qi="${qi}" data-oi="${oi}" onclick="checkAns(this,${qi},${oi})">${o}</button>`).join('')}</div>
+      <div class="quiz-feedback" id="fb-${qi}"></div>`;
+    c.appendChild(div);
+  });
+  updateScore();
+}
+
+function checkAns(btn, qi, oi) {
+  if (scores[qi] !== null) return;
+  const q = questions[qi];
+  const opts = btn.parentElement.querySelectorAll('.opt');
+  opts.forEach(o => { o.classList.add('answered'); o.style.cursor = 'default'; });
+  const fb = document.getElementById('fb-'+qi);
+  if (oi === q.ans) {
+    btn.classList.add('correct');
+    scores[qi] = 1;
+    fb.textContent = '✓ Correct! Well done.';
+    fb.className = 'quiz-feedback show ok';
+  } else {
+    btn.classList.add('wrong');
+    opts[q.ans].classList.add('correct');
+    scores[qi] = 0;
+    fb.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+    fb.className = 'quiz-feedback show no';
+  }
+  updateScore();
+}
+
+function updateScore() {
+  const done = scores.filter(s => s !== null).length;
+  const correct = scores.filter(s => s === 1).length;
+  document.getElementById('quiz-score-num').textContent = correct;
+  document.getElementById('quiz-score-label').textContent = `/ ${done} answered`;
+}
+
+function resetQuiz() {
+  scores = Array(questions.length).fill(null);
+  buildQuiz();
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 20, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
